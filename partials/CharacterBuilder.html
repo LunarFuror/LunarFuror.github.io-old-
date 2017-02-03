@@ -315,21 +315,25 @@
                 <div class="usa-width-one-sixth center">
                     <h4>Prof.</h4>
                     <hr class="style2" />
-                    <div ng-repeat="skill in skills | orderBy:'name'">
-                        {{ checkSkillProficiency(skill.name) }}
-                    </div>
                 </div>
                 <div class="usa-width-one-sixth center">
                     <h4>Value</h4>
                     <hr class="style2" />
-                    <div ng-repeat="skill in skills | orderBy:'name'">
-                        {{ skillMod(skill) }}
-                    </div>
                 </div>
                 <div class="usa-width-two-thirds">
                     <h4>Name</h4>
                     <hr class="style2" />
-                    <div ng-repeat="skill in skills | orderBy:'name'">
+                </div>
+            </div>
+            <div ng-repeat="skill in skills | orderBy:'name'">
+                <div class="usa-grid-full">
+                    <div class="usa-width-one-sixth center">
+                        {{ checkSkillProficiency(skill.name) }}
+                    </div>
+                    <div class="usa-width-one-sixth center">
+                        {{ skillMod(skill) }}
+                    </div>
+                    <div class="usa-width-two-thirds">
                         {{skill.name}} ({{skill.determiningStat}})
                     </div>
                 </div>
