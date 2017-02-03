@@ -3,339 +3,368 @@
     <p>
         This is intended for quick use for a person's first character. The choices are limited to those in the free basic D&D 5th edition rules.
     </p><p>As of now this is not a complete replacement of the rules, but more of a tool to help visualize your choices, and automatically fill calculations. For best results use this app with the quick builder in the rules.</p>
-    <div class="usa-width-one-half lf-char-options">
-        <h3>1) Character Choices</h3>
-        <div class="usa-grid-full">
-            <div class="usa-width-one-third">
-                <label for="selRace">Race:</label>
+    <div class="usa-grid-full">
+        <div class="usa-width-one-half lf-char-options">
+            <h3>1) Character Choices</h3>
+            <div class="usa-grid-full">
+                <div class="usa-width-one-third">
+                    <label for="selRace">Race:</label>
+                </div>
+                <div class="usa-width-two-thirds">
+                    <select id="selRace" ng-model="selectedRace" ng-options="race.name for race in races | orderBy:'name'">
+                        <option disabled value="">- Pick your race -</option>
+                    </select>
+                </div>
             </div>
-            <div class="usa-width-two-thirds">
-                <select id="selRace" ng-model="selectedRace" ng-options="race.name for race in races | orderBy:'name'">
-                    <option disabled value="">- Pick your race -</option>
-                </select>
+            <div class="usa-grid-full">
+                <div class="usa-width-one-third">
+                    <label for="selBack">Background:</label>
+                </div>
+                <div class="usa-width-two-thirds">
+                    <select id="selBack" ng-model="selectedBackground" ng-options="background.name for background in backgrounds | orderBy:'name'">
+                        <option disabled value="">- Pick your background -</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="usa-grid-full">
-            <div class="usa-width-one-third">
-                <label for="selBack">Background:</label>
+            <div class="usa-grid-full">
+                <div class="usa-width-one-third">
+                    <label for="selClass">Class:</label>
+                </div>
+                <div class="usa-width-two-thirds">
+                    <select id="selClass" ng-model="selectedClass" ng-change="checkClass()" ng-options="class.name for class in classes | orderBy:'name'">
+                        <option disabled value="">- Pick your class -</option>
+                    </select>
+                </div>
             </div>
-            <div class="usa-width-two-thirds">
-                <select id="selBack" ng-model="selectedBackground" ng-options="background.name for background in backgrounds | orderBy:'name'">
-                    <option disabled value="">- Pick your background -</option>
-                </select>
-            </div>
-        </div>
-        <div class="usa-grid-full">
-            <div class="usa-width-one-third">
-                <label for="selClass">Class:</label>
-            </div>
-            <div class="usa-width-two-thirds">
-                <select id="selClass" ng-model="selectedClass" ng-change="checkClass()" ng-options="class.name for class in classes | orderBy:'name'">
-                    <option disabled value="">- Pick your class -</option>
-                </select>
-            </div>
-        </div>
-        <br />
+            <br />
 
-        <!--Level:<br />
-        <select ng-model="selectedLevel" ng-options="level.level for level in levels | orderBy:'level'">
-            <option disabled value="">- Pick your level -</option>
-        </select>
-        <br /><br />-->
-        <hr class="style2" />
-        <h3>2) Character Stats</h3>
-        <div class="usa-grid-full">
-            <div class="usa-width-one-third center">
-                <label for="selStr">STR:</label>
-                <select id="selStr" ng-class="selectedStrClass" ng-change="checkStatSelection()" ng-model="selectedStr" ng-options="stat.name for stat in stats | orderBy:'-value'">
-                    <option disabled value="">- Strength -</option>
-                </select>
+            <!--Level:<br />
+            <select ng-model="selectedLevel" ng-options="level.level for level in levels | orderBy:'level'">
+                <option disabled value="">- Pick your level -</option>
+            </select>
+            <br /><br />-->
+            <hr class="style2" />
+            <h3>2) Character Stats</h3>
+            <div class="usa-grid-full">
+                <div class="usa-width-one-third center">
+                    <label for="selStr">STR:</label>
+                    <select id="selStr" ng-class="selectedStrClass" ng-change="checkStatSelection()" ng-model="selectedStr" ng-options="stat.name for stat in stats | orderBy:'-value'">
+                        <option disabled value="">- Strength -</option>
+                    </select>
+                </div>
+                <div class="usa-width-one-third center">
+                    <label for="selDex">DEX:</label>
+                    <select id="selDex" ng-class="selectedDexClass" ng-change="checkStatSelection()" ng-model="selectedDex" ng-options="stat.name for stat in stats | orderBy:'-value'">
+                        <option disabled value="">- Dexterity -</option>
+                    </select>
+                </div>
+                <div class="usa-width-one-third center">
+                    <label for="selCon">CON:</label>
+                    <select id="selCon" ng-class="selectedConClass" ng-change="checkStatSelection()" ng-model="selectedCon" ng-options="stat.name for stat in stats | orderBy:'-value'">
+                        <option disabled value="">- Constitution -</option>
+                    </select>
+                </div>
             </div>
-            <div class="usa-width-one-third center">
-                <label for="selDex">DEX:</label>
-                <select id="selDex" ng-class="selectedDexClass" ng-change="checkStatSelection()" ng-model="selectedDex" ng-options="stat.name for stat in stats | orderBy:'-value'">
-                    <option disabled value="">- Dexterity -</option>
-                </select>
+            <br />
+            <div class="usa-grid-full">
+                <div class="usa-width-one-third center">
+                    <label for="selInt">INT:</label>
+                    <select id="selInt" ng-class="selectedIntClass" ng-change="checkStatSelection()" ng-model="selectedInt" ng-options="stat.name for stat in stats | orderBy:'-value'">
+                        <option disabled value="">- Intelligence -</option>
+                    </select>
+                </div>
+                <div class="usa-width-one-third center">
+                    <label for="selWis">WIS:</label>
+                    <select id="selWis" ng-class="selectedWisClass" ng-change="checkStatSelection()" ng-model="selectedWis" ng-options="stat.name for stat in stats | orderBy:'-value'">
+                        <option disabled value="">- Wisdom -</option>
+                    </select>
+                </div>
+                <div class="usa-width-one-third center">
+                    <label for="selCha"> CHA:</label>
+                    <select id="selCha" ng-class="selectedChaClass" ng-change="checkStatSelection()" ng-model="selectedCha" ng-options="stat.name for stat in stats | orderBy:'-value'">
+                        <option disabled value="">- Charisma -</option>
+                    </select>
+                </div>
             </div>
-            <div class="usa-width-one-third center">
-                <label for="selCon">CON:</label>
-                <select id="selCon" ng-class="selectedConClass" ng-change="checkStatSelection()" ng-model="selectedCon" ng-options="stat.name for stat in stats | orderBy:'-value'">
-                    <option disabled value="">- Constitution -</option>
-                </select>
+            <br />
+            <hr class="style2" />
+            <h3>3) Class Choices</h3>
+            <br />
+            Proficiency Choices Remaining: {{choicesRemaining()}}
+            <br />
+            <div class="lf-class-skill-choices usa-grid-full">
+                <div class="usa-width-one-half">
+                    <input type="checkbox" id="cbAcrobatics" ng-disabled="disableProficiency('Acrobatics')" ng-model="selectedAcrobatics" ng-checked="!disableProficiency('Acrobatics') && 0" /><label for="cbAcrobatics" ng-class="proficiencyClass(disableProficiency('Acrobatics'))"> Acrobatics </label><br />
+                    <input type="checkbox" id="cbAnimalHandling" ng-disabled="disableProficiency('Animal Handling')" ng-model="selectedAnimalHandling" ng-checked="!disableProficiency('Animal Handling') && 0" /><label for="cbAnimalHandling" ng-class="proficiencyClass(disableProficiency('Animal Handling'))"> Animal Handling </label><br />
+                    <input type="checkbox" id="cbArcana" ng-disabled="disableProficiency('Arcana')" ng-model="selectedArcana" ng-checked="!disableProficiency('Arcana') && 0" /><label for="cbArcana" ng-class="proficiencyClass(disableProficiency('Arcana'))"> Arcana </label><br />
+                    <input type="checkbox" id="cbAthletics" ng-disabled="disableProficiency('Athletics')" ng-model="selectedAthletics" ng-checked="!disableProficiency('Athletics') && 0" /><label for="cbAthletics" ng-class="proficiencyClass(disableProficiency('Athletics'))"> Athletics </label><br />
+                    <input type="checkbox" id="cbDeception" ng-disabled="disableProficiency('Deception')" ng-model="selectedDeception" ng-checked="!disableProficiency('Deception') && 0" /><label for="cbDeception" ng-class="proficiencyClass(disableProficiency('Deception'))"> Deception </label><br />
+                    <input type="checkbox" id="cbHistory" ng-disabled="disableProficiency('History')" ng-model="selectedHistory" ng-checked="!disableProficiency('History') && 0" /><label for="cbHistory" ng-class="proficiencyClass(disableProficiency('History'))"> History </label><br />
+                    <input type="checkbox" id="cbInsight" ng-disabled="disableProficiency('Insight')" ng-model="selectedInsight" ng-checked="!disableProficiency('Insight') && 0" /><label for="cbInsight" ng-class="proficiencyClass(disableProficiency('Insight'))"> Insight </label><br />
+                    <input type="checkbox" id="cbIntimidation" ng-disabled="disableProficiency('Intimidation')" ng-model="selectedIntimidation" ng-checked="!disableProficiency('Intimidation') && 0" /><label for="cbIntimidation" ng-class="proficiencyClass(disableProficiency('Intimidation'))"> Intimidation </label><br />
+                    <input type="checkbox" id="cbInvestigation" ng-disabled="disableProficiency('Investigation')" ng-model="selectedInvestigation" ng-checked="!disableProficiency('Investigation') && 0" /><label for="cbInvestigation" ng-class="proficiencyClass(disableProficiency('Investigation'))"> Investigation </label><br />
+                </div>
+                <div class="usa-width-one-half">
+                    <input type="checkbox" id="cbMedicine" ng-disabled="disableProficiency('Medicine')" ng-model="selectedMedicine" ng-checked="!disableProficiency('Medicine') && 0" /><label for="cbMedicine" ng-class="proficiencyClass(disableProficiency('Medicine'))"> Medicine </label><br />
+                    <input type="checkbox" id="cbNature" ng-disabled="disableProficiency('Nature')" ng-model="selectedNature" ng-checked="!disableProficiency('Nature') && 0" /><label for="cbNature" ng-class="proficiencyClass(disableProficiency('Nature'))"> Nature </label><br />
+                    <input type="checkbox" id="cbPerception" ng-disabled="disableProficiency('Perception')" ng-model="selectedPerception" ng-checked="!disableProficiency('Perception') && 0" /><label for="cbPerception" ng-class="proficiencyClass(disableProficiency('Perception'))"> Perception </label><br />
+                    <input type="checkbox" id="cbPerformance" ng-disabled="disableProficiency('Performance')" ng-model="selectedPerformance" ng-checked="!disableProficiency('Performance') && 0" /><label for="cbPerformance" ng-class="proficiencyClass(disableProficiency('Performance'))"> Performance </label><br />
+                    <input type="checkbox" id="cbPersuasion" ng-disabled="disableProficiency('Persuasion')" ng-model="selectedPersuasion" ng-checked="!disableProficiency('Persuasion') && 0" /><label for="cbPersuasion" ng-class="proficiencyClass(disableProficiency('Persuasion'))"> Persuasion </label><br />
+                    <input type="checkbox" id="cbReligion" ng-disabled="disableProficiency('Religion')" ng-model="selectedReligion" ng-checked="!disableProficiency('Religion') && 0" /><label for="cbReligion" ng-class="proficiencyClass(disableProficiency('Religion'))"> Religion </label><br />
+                    <input type="checkbox" id="cbSleightOfHand" ng-disabled="disableProficiency('Sleight of Hand')" ng-model="selectedSleightOfHand" ng-checked="!disableProficiency('Sleight of Hand') && 0" /><label for="cbSleightOfHand" ng-class="proficiencyClass(disableProficiency('Sleight of Hand'))"> Sleight of Hand </label><br />
+                    <input type="checkbox" id="cbStealth" ng-disabled="disableProficiency('Stealth')" ng-model="selectedStealth" ng-checked="!disableProficiency('Stealth') && 0" /><label for="cbStealth" ng-class="proficiencyClass(disableProficiency('Stealth'))"> Stealth </label><br />
+                    <input type="checkbox" id="cbSurvival" ng-disabled="disableProficiency('Survival')" ng-model="selectedSurvival" ng-checked="!disableProficiency('Survival') && 0" /><label for="cbSurvival" ng-class="proficiencyClass(disableProficiency('Survival'))"> Survival </label><br />
+                </div>
             </div>
-        </div>
-        <br />
-        <div class="usa-grid-full">
-            <div class="usa-width-one-third center">
-                <label for="selInt">INT:</label>
-                <select id="selInt" ng-class="selectedIntClass" ng-change="checkStatSelection()" ng-model="selectedInt" ng-options="stat.name for stat in stats | orderBy:'-value'">
-                    <option disabled value="">- Intelligence -</option>
-                </select>
-            </div>
-            <div class="usa-width-one-third center">
-                <label for="selWis">WIS:</label>
-                <select id="selWis" ng-class="selectedWisClass" ng-change="checkStatSelection()" ng-model="selectedWis" ng-options="stat.name for stat in stats | orderBy:'-value'">
-                    <option disabled value="">- Wisdom -</option>
-                </select>
-            </div>
-            <div class="usa-width-one-third center">
-                <label for="selCha"> CHA:</label>
-                <select id="selCha" ng-class="selectedChaClass" ng-change="checkStatSelection()" ng-model="selectedCha" ng-options="stat.name for stat in stats | orderBy:'-value'">
-                    <option disabled value="">- Charisma -</option>
-                </select>
-            </div>
-        </div>
-        <br />
-        <hr class="style2" />
-        <h3>3) Class Choices</h3>
-        <br />
-        Proficiency Choices Remaining: {{choicesRemaining()}}
-        <br />
-        <div class="lf-class-skill-choices usa-grid-full">
-            <div class="usa-width-one-half">
-                <input type="checkbox" id="cbAcrobatics" ng-disabled="disableProficiency('Acrobatics')" ng-model="selectedAcrobatics" ng-checked="!disableProficiency('Acrobatics') && 0" /><label for="cbAcrobatics" ng-class="proficiencyClass(disableProficiency('Acrobatics'))"> Acrobatics </label><br />
-                <input type="checkbox" id="cbAnimalHandling" ng-disabled="disableProficiency('Animal Handling')" ng-model="selectedAnimalHandling" ng-checked="!disableProficiency('Animal Handling') && 0" /><label for="cbAnimalHandling" ng-class="proficiencyClass(disableProficiency('Animal Handling'))"> Animal Handling </label><br />
-                <input type="checkbox" id="cbArcana" ng-disabled="disableProficiency('Arcana')" ng-model="selectedArcana" ng-checked="!disableProficiency('Arcana') && 0" /><label for="cbArcana" ng-class="proficiencyClass(disableProficiency('Arcana'))"> Arcana </label><br />
-                <input type="checkbox" id="cbAthletics" ng-disabled="disableProficiency('Athletics')" ng-model="selectedAthletics" ng-checked="!disableProficiency('Athletics') && 0" /><label for="cbAthletics" ng-class="proficiencyClass(disableProficiency('Athletics'))"> Athletics </label><br />
-                <input type="checkbox" id="cbDeception" ng-disabled="disableProficiency('Deception')" ng-model="selectedDeception" ng-checked="!disableProficiency('Deception') && 0" /><label for="cbDeception" ng-class="proficiencyClass(disableProficiency('Deception'))"> Deception </label><br />
-                <input type="checkbox" id="cbHistory" ng-disabled="disableProficiency('History')" ng-model="selectedHistory" ng-checked="!disableProficiency('History') && 0" /><label for="cbHistory" ng-class="proficiencyClass(disableProficiency('History'))"> History </label><br />
-                <input type="checkbox" id="cbInsight" ng-disabled="disableProficiency('Insight')" ng-model="selectedInsight" ng-checked="!disableProficiency('Insight') && 0" /><label for="cbInsight" ng-class="proficiencyClass(disableProficiency('Insight'))"> Insight </label><br />
-                <input type="checkbox" id="cbIntimidation" ng-disabled="disableProficiency('Intimidation')" ng-model="selectedIntimidation" ng-checked="!disableProficiency('Intimidation') && 0" /><label for="cbIntimidation" ng-class="proficiencyClass(disableProficiency('Intimidation'))"> Intimidation </label><br />
-                <input type="checkbox" id="cbInvestigation" ng-disabled="disableProficiency('Investigation')" ng-model="selectedInvestigation" ng-checked="!disableProficiency('Investigation') && 0" /><label for="cbInvestigation" ng-class="proficiencyClass(disableProficiency('Investigation'))"> Investigation </label><br />
-            </div>
-            <div class="usa-width-one-half">
-                <input type="checkbox" id="cbMedicine" ng-disabled="disableProficiency('Medicine')" ng-model="selectedMedicine" ng-checked="!disableProficiency('Medicine') && 0" /><label for="cbMedicine" ng-class="proficiencyClass(disableProficiency('Medicine'))"> Medicine </label><br />
-                <input type="checkbox" id="cbNature" ng-disabled="disableProficiency('Nature')" ng-model="selectedNature" ng-checked="!disableProficiency('Nature') && 0" /><label for="cbNature" ng-class="proficiencyClass(disableProficiency('Nature'))"> Nature </label><br />
-                <input type="checkbox" id="cbPerception" ng-disabled="disableProficiency('Perception')" ng-model="selectedPerception" ng-checked="!disableProficiency('Perception') && 0" /><label for="cbPerception" ng-class="proficiencyClass(disableProficiency('Perception'))"> Perception </label><br />
-                <input type="checkbox" id="cbPerformance" ng-disabled="disableProficiency('Performance')" ng-model="selectedPerformance" ng-checked="!disableProficiency('Performance') && 0" /><label for="cbPerformance" ng-class="proficiencyClass(disableProficiency('Performance'))"> Performance </label><br />
-                <input type="checkbox" id="cbPersuasion" ng-disabled="disableProficiency('Persuasion')" ng-model="selectedPersuasion" ng-checked="!disableProficiency('Persuasion') && 0" /><label for="cbPersuasion" ng-class="proficiencyClass(disableProficiency('Persuasion'))"> Persuasion </label><br />
-                <input type="checkbox" id="cbReligion" ng-disabled="disableProficiency('Religion')" ng-model="selectedReligion" ng-checked="!disableProficiency('Religion') && 0" /><label for="cbReligion" ng-class="proficiencyClass(disableProficiency('Religion'))"> Religion </label><br />
-                <input type="checkbox" id="cbSleightOfHand" ng-disabled="disableProficiency('Sleight of Hand')" ng-model="selectedSleightOfHand" ng-checked="!disableProficiency('Sleight of Hand') && 0" /><label for="cbSleightOfHand" ng-class="proficiencyClass(disableProficiency('Sleight of Hand'))"> Sleight of Hand </label><br />
-                <input type="checkbox" id="cbStealth" ng-disabled="disableProficiency('Stealth')" ng-model="selectedStealth" ng-checked="!disableProficiency('Stealth') && 0" /><label for="cbStealth" ng-class="proficiencyClass(disableProficiency('Stealth'))"> Stealth </label><br />
-                <input type="checkbox" id="cbSurvival" ng-disabled="disableProficiency('Survival')" ng-model="selectedSurvival" ng-checked="!disableProficiency('Survival') && 0" /><label for="cbSurvival" ng-class="proficiencyClass(disableProficiency('Survival'))"> Survival </label><br />
-            </div>
-        </div>
-        <br />
-        <div class="usa-grid-full">
-            <div class="usa-width-one-half">
-                <div class="usa-grid-full">
-                    <div class="usa-width-one-third">
-                        <label for="selArmor">Armor:</label>
+            <br />
+            <div class="usa-grid-full">
+                <div class="usa-width-one-half">
+                    <div class="usa-grid-full">
+                        <div class="usa-width-one-third">
+                            <label for="selArmor">Armor:</label>
+                        </div>
+                        <div class="usa-width-two-thirds">
+                            <select id="selArmor" ng-model="selectedArmor" ng-options="armor.name for armor in armors | orderBy:'name' | filter:filterArmor">
+                                <option disabled value="">- Armor -</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="usa-width-two-thirds">
-                        <select id="selArmor" ng-model="selectedArmor" ng-options="armor.name for armor in armors | orderBy:'name' | filter:filterArmor">
-                            <option disabled value="">- Armor -</option>
-                        </select>
+                </div>
+                <div class="usa-width-one-half">
+                    <label for="cbShield" ng-class="proficiencyClass(disableShield())">Shield:</label> <input id="cbShield" type="checkbox" ng-disabled="disableShield()" ng-checked="!disableShield() && 0" ng-model="selectedShield" />
+                </div>
+            </div>
+            <br />
+            <div ng-class="clericChoiceClass">
+                <select>
+                    <option>
+                        Mace
+                    </option>
+                    <option>
+                        Warhammer
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Priest's pack
+                    </option>
+                    <option>
+                        Explorer's pack
+                    </option>
+                </select>
+            </div>
+
+            <div ng-class="fighterChoiceClass">
+                <select>
+                    <option>
+                        A martial weapon and shield
+                    </option>
+                    <option>
+                        Two martial weapons
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Light Crossbow and 20 bolts
+                    </option>
+                    <option>
+                        Two handaxes
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Dungeoneer's Pack
+                    </option>
+                    <option>
+                        Explorer's Pack
+                    </option>
+                </select>
+            </div>
+
+            <div ng-class="rogueChoiceClass">
+                <select>
+                    <option>
+                        Rapier
+                    </option>
+                    <option>
+                        Shortsword
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Shortbow and quiver of 20 arrows
+                    </option>
+                    <option>
+                        Shortsword
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Burglar's Pack
+                    </option>
+                    <option>
+                        Dungeoneer's pack
+                    </option>
+                    <option>
+                        Explorer's pack
+                    </option>
+                </select>
+            </div>
+
+            <div ng-class="wizardChoiceClass">
+                <select>
+                    <option>
+                        Quarterstaff
+                    </option>
+                    <option>
+                        Dagger
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Component Pouch
+                    </option>
+                    <option>
+                        Arcane Focus
+                    </option>
+                </select>
+                <select>
+                    <option>
+                        Scholar's Pack
+                    </option>
+                    <option>
+                        Explorer's Pack
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="usa-width-one-half">
+            <div class="lf-char-stats">
+                <h3>Stat Results</h3>
+                <hr class="style2" />
+                <div class="usa-grid-full">
+                    <div class="usa-width-one-third center">
+                        Health<br />
+                        {{maxHealth()}}
+                    </div>
+                    <div class="usa-width-one-third center">
+                        Armor<br />
+                        {{ calculateAC() }}
+                    </div>
+                    <div class="usa-width-one-third center">
+                        Initiative<br />
+                        {{ displayMod(dexMod()) }}
+                    </div>
+                </div>
+                <hr class="style2" />
+                <div class="usa-grid-full">
+                    <div class="usa-width-one-fourth">
+                        <h4>Name</h4>
+                        <hr class="style2" />
+                        STR: <br />
+                        DEX: <br />
+                        CON: <br />
+                        INT: <br />
+                        WIS: <br />
+                        CHA:
+                    </div>
+                    <div class="usa-width-one-fourth center">
+                        <h4>Value</h4>
+                        <hr class="style2" />
+                        {{totalStr()}}<br />
+                        {{totalDex()}}<br />
+                        {{totalCon()}}<br />
+                        {{totalInt()}}<br />
+                        {{totalWis()}}<br />
+                        {{totalCha()}}
+                    </div>
+                    <div class="usa-width-one-fourth center">
+                        <h4>Mod</h4>
+                        <hr class="style2" />
+                        {{ displayMod(strMod()) }}<br />
+                        {{ displayMod(dexMod()) }}<br />
+                        {{ displayMod(conMod()) }}<br />
+                        {{ displayMod(intMod()) }}<br />
+                        {{ displayMod(wisMod()) }}<br />
+                        {{ displayMod(chaMod()) }}
+                    </div>
+                    <div class="usa-width-one-fourth center">
+                        <h4>Save</h4>
+                        <hr class="style2" />
+                        {{ displayMod(strMod()) }}<br />
+                        {{ displayMod(dexMod()) }}<br />
+                        {{ displayMod(conMod()) }}<br />
+                        {{ displayMod(intMod()) }}<br />
+                        {{ displayMod(wisMod()) }}<br />
+                        {{ displayMod(chaMod()) }}
                     </div>
                 </div>
             </div>
-            <div class="usa-width-one-half">
-                <label for="cbShield" ng-class="proficiencyClass(disableShield())">Shield:</label> <input id="cbShield" type="checkbox" ng-disabled="disableShield()" ng-checked="!disableShield() && 0" ng-model="selectedShield" />
-            </div>
-        </div>
-        <br />
-        <div ng-class="clericChoiceClass">
-            <select>
-                <option>
-                    Mace
-                </option>
-                <option>
-                    Warhammer
-                </option>
-            </select>
-            <select>
-                <option>
-                    Priest's pack
-                </option>
-                <option>
-                    Explorer's pack
-                </option>
-            </select>
-            <div>
-                Holy Symbol
-            </div>
-        </div>
-
-        <div ng-class="fighterChoiceClass">
-            <select>
-                <option>
-                    A martial weapon and shield
-                </option>
-                <option>
-                    Two martial weapons
-                </option>
-            </select>
-            <select>
-                <option>
-                    Light Crossbow and 20 bolts
-                </option>
-                <option>
-                    Two handaxes
-                </option>
-            </select>
-            <select>
-                <option>
-                    Dungeoneer's Pack
-                </option>
-                <option>
-                    Explorer's Pack
-                </option>
-            </select>
-        </div>
-
-        <div ng-class="rogueChoiceClass">
-            <select>
-                <option>
-                    Rapier
-                </option>
-                <option>
-                    Shortsword
-                </option>
-            </select>
-            <select>
-                <option>
-                    Shortbow and quiver of 20 arrows
-                </option>
-                <option>
-                    Shortsword
-                </option>
-            </select>
-            <select>
-                <option>
-                    Burglar's Pack
-                </option>
-                <option>
-                    Dungeoneer's pack
-                </option>
-                <option>
-                    Explorer's pack
-                </option>
-            </select>
-        </div>
-
-        <div ng-class="wizardChoiceClass">
-            <select>
-                <option>
-                    Quarterstaff
-                </option>
-                <option>
-                    Dagger
-                </option>
-            </select>
-            <select>
-                <option>
-                    Component Pouch
-                </option>
-                <option>
-                    Arcane Focus
-                </option>
-            </select>
-            <select>
-                <option>
-                    Scholar's Pack
-                </option>
-                <option>
-                    Explorer's Pack
-                </option>
-            </select>
-            <div>
-                Spell book
+            <br />
+            <div class="lf-char-skills">
+                <h3>Skills</h3>
+                <hr class="style2" />
+                <br />
+                Proficiency Bonus: +2
+                <div class="usa-grid-full">
+                    <div class="usa-width-one-sixth center">
+                        <h4>Prof.</h4>
+                        <hr class="style2" />
+                    </div>
+                    <div class="usa-width-one-sixth center">
+                        <h4>Value</h4>
+                        <hr class="style2" />
+                    </div>
+                    <div class="usa-width-two-thirds">
+                        <h4>Name</h4>
+                        <hr class="style2" />
+                    </div>
+                </div>
+                <div ng-repeat="skill in skills | orderBy:'name'" class="usa-grid-full">
+                    <div class="usa-width-one-sixth center">
+                        {{ checkSkillProficiency(skill.name) }}
+                    </div>
+                    <div class="usa-width-one-sixth center">
+                        {{ skillMod(skill) }}
+                    </div>
+                    <div class="usa-width-two-thirds">
+                        {{skill.name}} ({{skill.determiningStat}})
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="usa-grid-full .lf-char-inv">
+        <div class="usa-width-two-thirds">
+            <h2>Inventory</h2>
+            <hr class="style2" />
 
-    <div class="usa-width-one-half">
-        <div class="lf-char-stats">
-            <h3>Stat Results</h3>
-            <hr class="style2" />
-            <div class="usa-grid-full">
-                <div class="usa-width-one-third center">
-                    Health<br />
-                    {{maxHealth()}}
-                </div>
-                <div class="usa-width-one-third center">
-                    Armor<br />
-                    {{ calculateAC() }}
-                </div>
-                <div class="usa-width-one-third center">
-                    Initiative<br />
-                    {{ displayMod(dexMod()) }}
-                </div>
+            <div ng-class="clericChoiceClass">
+                Holy Symbol
             </div>
-            <hr class="style2" />
-            <div class="usa-grid-full">
-                <div class="usa-width-one-fourth">
-                    <h4>Name</h4>
-                    <hr class="style2" />
-                    STR: <br />
-                    DEX: <br />
-                    CON: <br />
-                    INT: <br />
-                    WIS: <br />
-                    CHA:
-                </div>
-                <div class="usa-width-one-fourth center">
-                    <h4>Value</h4>
-                    <hr class="style2" />
-                    {{totalStr()}}<br />
-                    {{totalDex()}}<br />
-                    {{totalCon()}}<br />
-                    {{totalInt()}}<br />
-                    {{totalWis()}}<br />
-                    {{totalCha()}}
-                </div>
-                <div class="usa-width-one-fourth center">
-                    <h4>Mod</h4>
-                    <hr class="style2" />
-                    {{ displayMod(strMod()) }}<br />
-                    {{ displayMod(dexMod()) }}<br />
-                    {{ displayMod(conMod()) }}<br />
-                    {{ displayMod(intMod()) }}<br />
-                    {{ displayMod(wisMod()) }}<br />
-                    {{ displayMod(chaMod()) }}
-                </div>
-                <div class="usa-width-one-fourth center">
-                    <h4>Save</h4>
-                    <hr class="style2" />
-                    {{ displayMod(strMod()) }}<br />
-                    {{ displayMod(dexMod()) }}<br />
-                    {{ displayMod(conMod()) }}<br />
-                    {{ displayMod(intMod()) }}<br />
-                    {{ displayMod(wisMod()) }}<br />
-                    {{ displayMod(chaMod()) }}
-                </div>
+
+            <div ng-class="fighterChoiceClass">
+            </div>
+
+            <div ng-class="rogueChoiceClass">
+            </div>
+
+            <div ng-class="wizardChoiceClass">
+                Spell book
             </div>
         </div>
-        <br />
-        <div class="lf-char-skills">
-            <h3>Skills</h3>
+        <div class="usa-width-one-third usa-grid-full">
+            <h2>Money</h2>
             <hr class="style2" />
-            <br />
-            Proficiency Bonus: +2
-            <div class="usa-grid-full">
-                <div class="usa-width-one-sixth center">
-                    <h4>Prof.</h4>
-                    <hr class="style2" />
-                </div>
-                <div class="usa-width-one-sixth center">
-                    <h4>Value</h4>
-                    <hr class="style2" />
-                </div>
-                <div class="usa-width-two-thirds">
-                    <h4>Name</h4>
-                    <hr class="style2" />
-                </div>
+            <div class="usa-width-two-thirds">
+                Copper:<br />
+                Silver (10 C):<br />
+                Electrum (5 S):<br />
+                Gold (10 S):<br />
+                Platinum (10 G):<br />
             </div>
-            <div ng-repeat="skill in skills | orderBy:'name'" class="usa-grid-full">
-                <div class="usa-width-one-sixth center">
-                    {{ checkSkillProficiency(skill.name) }}
-                </div>
-                <div class="usa-width-one-sixth center">
-                    {{ skillMod(skill) }}
-                </div>
-                <div class="usa-width-two-thirds">
-                    {{skill.name}} ({{skill.determiningStat}})
-                </div>
+            <div class="usa-width-one-third">
             </div>
         </div>
     </div>
