@@ -21,7 +21,7 @@
                     <label for="selBack">Background:</label>
                 </div>
                 <div class="usa-width-two-thirds">
-                    <select id="selBack" ng-model="selectedBackground" ng-options="background.name for background in backgrounds | orderBy:'name'">
+                    <select id="selBack" ng-model="selectedBackground" ng-change="clearProficiencies()" ng-options="background.name for background in backgrounds | orderBy:'name'">
                         <option disabled value="">- Pick your background -</option>
                     </select>
                 </div>
