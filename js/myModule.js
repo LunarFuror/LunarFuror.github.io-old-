@@ -17,8 +17,19 @@ demoApp.config(function ($routeProvider){
 			    controller: 'CharacterBuilderController',
 			    templateUrl: 'partials/CharacterBuilder.html'
 			})
+		.when('/EotEStats',
+			{
+			    controller: 'CharacterBuilderController',
+			    templateUrl: 'partials/EotEStats.html'
+			})
 		.otherwise({redirectTo:'/'});
 })
+    //EotE Stats code
+    .factory('EotEStatsFactory', function () {
+    })
+    .controller('EotEStatsController', function ($scope, EotEStatsFactory) {
+    })
+
     //Character Builder code
 .factory('CharacterBuilderFactory', function () {
     var factory = {};
