@@ -9,29 +9,33 @@
             <hr />
 
             <h2>Player dice</h2>
-            <p>
-                <label for="inYellow">Yellow:</label>
-                <input id="inYellow" ng-model="numYellowDice" />
-            </p><p>
-                <label for="inGreen">Green:</label>
-                <input id="inGreen" ng-model="numGreenDice" />
-            </p><p>
-                <label for="inBlue">Blue:</label>
-                <input id="inBlue" ng-model="numBlueDice" />
-            </p>
+            <div class="usa-grid-full">
+                <div class="usa-width-one-half">
+                    <p><label for="inYellow">Yellow:</label></p>
+                    <p><label for="inGreen">Green:</label></p>
+                    <p><label for="inBlue">Blue:</label></p>
+                </div>
+                <div class="usa-width-one-half">
+                    <p><input id="inYellow" ng-model="numYellowDice" /></p>
+                    <p><input id="inGreen" ng-model="numGreenDice" /></p>
+                    <p><input id="inBlue" ng-model="numBlueDice" /></p>
+                </div>
+            </div>
             <hr />
 
             <h2>Opposing dice</h2>
-            <p>
-                <label for="inRed">Red:</label>
-                <input id="inRed" ng-model="numRedDice" />
-            </p><p>
-                <label for="inPurple">Purple:</label>
-                <input id="inPurple" ng-model="numPurpleDice" />
-            </p><p>
-                <label for="inBlack">Black:</label>
-                <input id="inBlack" ng-model="numBlackDice" />
-            </p>
+            <div class="usa-grid-full">
+                <div class="usa-width-one-half">
+                    <p><label for="inRed">Red:</label></p>
+                    <p><label for="inPurple">Purple:</label></p>
+                    <p><label for="inBlack">Black:</label></p>
+                </div>
+                <div class="usa-width-one-half">
+                    <p> <input id="inRed" ng-model="numRedDice" /></p>
+                    <p><input id="inPurple" ng-model="numPurpleDice" /></p>
+                    <p> <input id="inBlack" ng-model="numBlackDice" /></p>
+                </div>
+            </div>
             <hr />
 
             <button class="button" ng-click="calculateStatistics()">Roll all the things!</button>

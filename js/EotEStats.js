@@ -2,18 +2,26 @@
 angular.module('demoApp')
 .factory('EotEStatsFactory', function () {})
 .controller('EotEStatsController', function ($scope, EotEStatsFactory) {
+    $scope.success = 0;
+    $scope.advantage = 0;
+    $scope.triumph = 0;
+    $scope.failure = 0;
+    $scope.threat = 0;
+    $scope.despair = 0;
     $scope.totalSuccess = 0;
     $scope.totalAdvantage = 0;
     $scope.totalTriumph = 0;
     $scope.totalFailure = 0;
     $scope.totalThreat = 0;
     $scope.totalDespair = 0;
+    $scope.totalPasses = 0;
     $scope.averageSuccess = 0;
     $scope.averageAdvantage = 0;
     $scope.averageTriumph = 0;
     $scope.averageFailure = 0;
     $scope.averageThreat = 0;
     $scope.averageDespair = 0;
+    $scope.averagePasses = 0;
 
     $scope.calculateStatistics = function () {
         $scope.success = 0;
