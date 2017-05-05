@@ -2,30 +2,36 @@
     <div class="usa-grid-full">
         <div class="lf-char-stats usa-width-one-half">
             <h2>number of checks</h2>
-            <label for="inChecks">Yellow:</label>
-            <input id="inChecks" ng-model="numChecks" />
-            <hr/>
+            <p>
+                <label for="inChecks">Checks:</label>
+                <input id="inChecks" ng-model="numChecks" />
+            </p>
+            <hr />
 
             <h2>Player dice</h2>
-            <label for="inYellow">Yellow:</label>
-            <input id="inYellow" ng-model="numYellowDice" />
-
-            <label for="inGreen">Green:</label>
-            <input id="inGreen" ng-model="numGreenDice" />
-
-            <label for="inBlue">Blue:</label>
-            <input id="inBlue" ng-model="numBlueDice" />
-            <hr/>
+            <p>
+                <label for="inYellow">Yellow:</label>
+                <input id="inYellow" ng-model="numYellowDice" />
+            </p><p>
+                <label for="inGreen">Green:</label>
+                <input id="inGreen" ng-model="numGreenDice" />
+            </p><p>
+                <label for="inBlue">Blue:</label>
+                <input id="inBlue" ng-model="numBlueDice" />
+            </p>
+            <hr />
 
             <h2>Opposing dice</h2>
-            <label for="inRed">Red:</label>
-            <input id="inRed" ng-model="numRedDice" />
-
-            <label for="inPurple">Purple:</label>
-            <input id="inPurple" ng-model="numPurpleDice" />
-
-            <label for="inBlack">Black:</label>
-            <input id="inBlack" ng-model="numBlackDice" />
+            <p>
+                <label for="inRed">Red:</label>
+                <input id="inRed" ng-model="numRedDice" />
+            </p><p>
+                <label for="inPurple">Purple:</label>
+                <input id="inPurple" ng-model="numPurpleDice" />
+            </p><p>
+                <label for="inBlack">Black:</label>
+                <input id="inBlack" ng-model="numBlackDice" />
+            </p>
             <hr />
 
             <button class="button" ng-click="calculateStatistics()">Roll all the things!</button>
