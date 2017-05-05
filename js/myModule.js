@@ -19,7 +19,7 @@ demoApp.config(function ($routeProvider){
 			})
 		.when('/EotEStats',
 			{
-			    controller: 'CharacterBuilderController',
+			    controller: 'EotEStatsController',
 			    templateUrl: 'partials/EotEStats.html'
 			})
 		.otherwise({redirectTo:'/'});
