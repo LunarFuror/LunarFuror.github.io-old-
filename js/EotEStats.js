@@ -199,6 +199,6 @@ angular.module('demoApp')
         $scope.averageFailure = $scope.totalFailure / $scope.numChecks;
         $scope.averageThreat = $scope.totalThreat / $scope.numChecks;
         $scope.averageDespair = $scope.totalDespair / $scope.numChecks;
-        $scope.averagePasses = $scope.totalPasses / $scope.numChecks;
+        $scope.averagePasses = $scope.totalPasses / $scope.numChecks * 100;
     };
 });
