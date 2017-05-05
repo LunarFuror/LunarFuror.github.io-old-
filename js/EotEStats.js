@@ -24,12 +24,6 @@ angular.module('demoApp')
     $scope.averagePasses = 0;
 
     $scope.calculateStatistics = function () {
-        $scope.success = 0;
-        $scope.advantage = 0;
-        $scope.triumph = 0;
-        $scope.failure = 0;
-        $scope.threat = 0;
-        $scope.despair = 0;
         $scope.totalSuccess = 0;
         $scope.totalAdvantage = 0;
         $scope.totalTriumph = 0;
