@@ -1,4 +1,4 @@
-﻿<div class="container">
+<div class="container">
     <h1>Edge of the Empire mass roll simulator</h1>
     <p>This tool simulates as many rolls as you want, of the dice pool you want, then tells you the statistics of the roll. Keep in mind this is simulation not prediction so there will be a variance between the outputs. I reccomend trying 10,000 checks maybe even 100,000.</p>
     <div class="usa-grid-full">
@@ -17,9 +17,9 @@
                     <p><label for="inBlue">Blue:</label></p>
                 </div>
                 <div class="usa-width-one-half">
-                    <p><input id="inYellow" ng-model="numYellowDice" /></p>
-                    <p><input id="inGreen" ng-model="numGreenDice" /></p>
-                    <p><input id="inBlue" ng-model="numBlueDice" /></p>
+                    <p><input id="inYellow" type="number" ng-model="numYellowDice" /></p>
+                    <p><input id="inGreen" type="number" ng-model="numGreenDice" /></p>
+                    <p><input id="inBlue" type="number" ng-model="numBlueDice" /></p>
                 </div>
             </div>
             <hr />
@@ -32,9 +32,9 @@
                     <p><label for="inBlack">Black:</label></p>
                 </div>
                 <div class="usa-width-one-half">
-                    <p> <input id="inRed" ng-model="numRedDice" /></p>
-                    <p><input id="inPurple" ng-model="numPurpleDice" /></p>
-                    <p> <input id="inBlack" ng-model="numBlackDice" /></p>
+                    <p> <input id="inRed" type="number" ng-model="numRedDice" /></p>
+                    <p><input id="inPurple" type="number" ng-model="numPurpleDice" /></p>
+                    <p> <input id="inBlack" type="number" ng-model="numBlackDice" /></p>
                 </div>
             </div>
             <hr />
@@ -68,16 +68,16 @@
                 <div class="usa-width-one-third">
                     <h3>Average</h3>
                     <hr />
-                    <p>{{averageSuccess}}</p>
-                    <p>{{averageAdvantage}}</p>
-                    <p>{{averageTriumph}}</p>
-                    <p>{{averageFailure}}</p>
-                    <p>{{averageThreat}}</p>
-                    <p>{{averageDespair}}</p>
+                    <p>{{averageSuccess | number : 2}}</p>
+                    <p>{{averageAdvantage | number : 2}}</p>
+                    <p>{{averageTriumph | number : 2}}</p>
+                    <p>{{averageFailure | number : 2}}</p>
+                    <p>{{averageThreat | number : 2}}</p>
+                    <p>{{averageDespair | number : 2}}</p>
                 </div>
             </div>
             <p>Passed Checks: {{totalPasses}} out of {{numChecks}}</p>
-            <p>Passed Rate: {{averagePasses}} %</p>
+            <p>Passed Rate: {{averagePasses | number : 2}} %</p>
         </div>
     </div>
 </div>
